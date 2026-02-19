@@ -1,6 +1,6 @@
 <img src="notifications.png" width="380" align="right" alt="macOS Notification Center with grouped notifications">
 
-## notif
+<strong style="font-size:2em">notif</strong>
 
 A macOS Notification Center CLI — list, click, dismiss, expand, and collapse notifications from the command line.
 
