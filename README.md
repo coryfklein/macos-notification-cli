@@ -35,7 +35,7 @@ brew install coryfklein/tap/notif
 
 [![Download Alfred Workflow](https://img.shields.io/badge/Alfred-Download_Workflow-blueviolet?logo=alfred)](https://github.com/coryfklein/macos-notification-cli/releases/latest/download/Notif.alfredworkflow)
 
-Download and open to install. Provides `cn` (click notification), `dismiss` (clear all), and `notifications` (list) keywords. See [Alfred workflow details](#alfred-workflow) below.
+Download and open to install. Provides `cn` (click notification) and `dismiss` (clear all) keywords. See [Alfred workflow details](#alfred-workflow) below.
 
 ### From source
 
@@ -119,13 +119,12 @@ notif test clear     # Dismiss all notifications
 
 ## Alfred workflow
 
-An [Alfred](https://www.alfredapp.com/) workflow is included with three keywords:
+An [Alfred](https://www.alfredapp.com/) workflow is included with two keywords:
 
 | Keyword | Action |
 |---------|--------|
 | `cn` | Click the topmost notification (expands groups automatically) |
 | `dismiss` | Dismiss all notifications |
-| `notifications` | List all current notifications (shown in Large Type) |
 
 ### Installing the workflow
 

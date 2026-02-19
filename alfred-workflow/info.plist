@@ -32,41 +32,15 @@
 				<false/>
 			</dict>
 		</array>
-		<key>NOTIF-LIST-KEYWORD</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>NOTIF-LIST-SCRIPT</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>NOTIF-LIST-SCRIPT</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>NOTIF-LIST-LARGETYPE</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 	</dict>
 	<key>createdby</key>
 	<string>Cory Klein</string>
 	<key>description</key>
-	<string>Click, dismiss, and list macOS notifications from Alfred. Requires the notif CLI (brew install coryfklein/tap/notif).</string>
+	<string>Click and dismiss macOS notifications from Alfred. Requires the notif CLI (brew install coryfklein/tap/notif).</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>Notif — Notification Center Actions</string>
+	<string>Notification Center Actions</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -159,70 +133,6 @@ notif test clear</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>keyword</key>
-				<string>notifications</string>
-				<key>subtext</key>
-				<string>List all current macOS notifications</string>
-				<key>text</key>
-				<string>List Notifications</string>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>NOTIF-LIST-KEYWORD</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>0</integer>
-				<key>script</key>
-				<string>export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
-notif list</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>NOTIF-LIST-SCRIPT</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>lastpathcomponent</key>
-				<string></string>
-				<key>onlyshowifquerypopulated</key>
-				<false/>
-				<key>output</key>
-				<integer>1</integer>
-				<key>showoldcontent</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.largetype</string>
-			<key>uid</key>
-			<string>NOTIF-LIST-LARGETYPE</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
 	</array>
 	<key>readme</key>
 	<string>Notification Center Actions for Alfred
@@ -234,8 +144,6 @@ Keywords:
 • cn — Click the topmost notification (expands groups automatically)
 
 • dismiss — Dismiss all notifications
-
-• notifications — List all current notifications (shown in Large Type)
 
 Setup:
 
@@ -273,27 +181,6 @@ https://github.com/coryfklein/macos-notification-cli</string>
 			<real>300</real>
 			<key>ypos</key>
 			<real>250</real>
-		</dict>
-		<key>NOTIF-LIST-KEYWORD</key>
-		<dict>
-			<key>xpos</key>
-			<real>100</real>
-			<key>ypos</key>
-			<real>400</real>
-		</dict>
-		<key>NOTIF-LIST-SCRIPT</key>
-		<dict>
-			<key>xpos</key>
-			<real>300</real>
-			<key>ypos</key>
-			<real>400</real>
-		</dict>
-		<key>NOTIF-LIST-LARGETYPE</key>
-		<dict>
-			<key>xpos</key>
-			<real>500</real>
-			<key>ypos</key>
-			<real>400</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
