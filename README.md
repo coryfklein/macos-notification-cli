@@ -7,24 +7,30 @@ List, click, dismiss, expand, and collapse notifications and notification groups
 ## Requirements
 
 - macOS 13+ (Ventura or later; tested on macOS Tahoe)
-- Swift 6.0+
 - Accessibility permission granted to your terminal app
 
 ## Installation
+
+### Homebrew
+
+```bash
+brew install coryfklein/tap/notif
+```
+
+### From source
+
+Requires Swift 6.0+ (included with Xcode Command Line Tools).
 
 ```bash
 git clone https://github.com/coryfklein/macos-notification-cli.git
 cd macos-notification-cli
 swift build -c release
-```
-
-The binary will be at `.build/release/notif`. Optionally copy it to your PATH:
-
-```bash
 cp .build/release/notif /usr/local/bin/
 ```
 
-On first run, you'll need to grant Accessibility permission to your terminal app in **System Settings > Privacy & Security > Accessibility**.
+### Setup
+
+On first run, grant Accessibility permission to your terminal app in **System Settings > Privacy & Security > Accessibility**.
 
 ## Usage
 
