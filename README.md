@@ -31,7 +31,7 @@ There are plenty of tools for *sending* notifications from a script ([terminal-n
 brew install coryfklein/tap/notif
 ```
 
-### Alfred workflow
+### Alfred
 
 [![Download Alfred Workflow](https://img.shields.io/badge/Alfred-Download_Workflow-blueviolet?logo=alfred)](https://github.com/coryfklein/macos-notification-cli/releases/latest/download/Notif.alfredworkflow)
 
