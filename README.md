@@ -1,8 +1,18 @@
 # notif
 
-A CLI tool for interacting with macOS Notification Center via the Accessibility API.
+A macOS Notification Center CLI — list, click, dismiss, expand, and collapse notifications from the command line.
 
-List, click, dismiss, expand, and collapse notifications and notification groups — all from the terminal.
+There are plenty of tools for *sending* notifications from a script ([terminal-notifier](https://github.com/julienXX/terminal-notifier), `osascript`, etc.), but almost nothing for the other direction: reading, dismissing, or interacting with notifications that are already on screen. `notif` fills that gap. It lets you manage macOS notifications programmatically — automate notification workflows, dismiss notifications in bulk from a script, or click a pending notification without touching the mouse.
+
+## Features
+
+- **List pending notifications** in your terminal, including collapsed and expanded groups
+- **Click/activate notifications** from the command line, with automatic group expansion
+- **Dismiss notifications** individually, by group, or all at once
+- **Expand and collapse** notification groups programmatically
+- **Dump the raw Accessibility tree** for debugging and reverse-engineering Notification Center
+- **Create test scenarios** to exercise specific notification states
+- Works with any app's notifications — Slack, Mail, iMessage, whatever is in Notification Center
 
 ## Requirements
 
@@ -99,9 +109,9 @@ notif test clear     # Dismiss all notifications
 
 ## How it works
 
-`notif` uses the macOS Accessibility API (`AXUIElement` from ApplicationServices) to read and interact with the Notification Center process. It navigates the accessibility tree to find notifications, determine their state (individual, collapsed group, expanded group), and perform actions like clicking or dismissing.
+`notif` uses the macOS Accessibility API (`AXUIElement` from the ApplicationServices framework) to read and interact with the Notification Center process. It navigates the accessibility tree to find notifications, determine their state (individual, collapsed group, expanded group), and perform actions like clicking or dismissing. Written in Swift with [swift-argument-parser](https://github.com/apple/swift-argument-parser).
 
-The `dump` command is useful for debugging — it prints the entire AX tree so you can see exactly what macOS exposes:
+The macOS Notification Center accessibility hierarchy is complex and underdocumented — it changes between OS versions, uses different structures for single notifications vs. groups, and flattens expanded groups into sibling elements rather than nesting them. The `dump` command is useful for debugging this:
 
 ```
 $ notif dump --max-depth 5
