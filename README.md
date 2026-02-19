@@ -2,6 +2,10 @@
 
 A macOS Notification Center CLI — list, click, dismiss, expand, and collapse notifications from the command line.
 
+<p align="center">
+  <img src="notifications.png" width="380" alt="macOS Notification Center with grouped notifications">
+</p>
+
 There are plenty of tools for *sending* notifications from a script ([terminal-notifier](https://github.com/julienXX/terminal-notifier), `osascript`, etc.), but almost nothing for the other direction: reading, dismissing, or interacting with notifications that are already on screen. `notif` fills that gap. It lets you manage macOS notifications programmatically — automate notification workflows, dismiss notifications in bulk from a script, or click a pending notification without touching the mouse.
 
 ## Features
