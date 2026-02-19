@@ -21,11 +21,17 @@ There are plenty of tools for *sending* notifications from a script ([terminal-n
 
 ## Installation
 
-### Homebrew
+### CLI
 
 ```bash
 brew install coryfklein/tap/notif
 ```
+
+### Alfred workflow
+
+[![Download Alfred Workflow](https://img.shields.io/badge/Alfred-Download_Workflow-blueviolet?logo=alfred)](https://github.com/coryfklein/macos-notification-cli/releases/latest/download/Notif.alfredworkflow)
+
+Download and open to install. Provides `cn` (click notification), `dismiss` (clear all), and `notifications` (list) keywords. See [Alfred workflow details](#alfred-workflow) below.
 
 ### From source
 
@@ -40,7 +46,7 @@ cp .build/release/notif /usr/local/bin/
 
 ### Setup
 
-On first run, grant Accessibility permission to your terminal app in **System Settings > Privacy & Security > Accessibility**.
+On first run, grant Accessibility permission to your terminal app (and/or Alfred) in **System Settings > Privacy & Security > Accessibility**.
 
 ## Usage
 
@@ -120,7 +126,7 @@ An [Alfred](https://www.alfredapp.com/) workflow is included with three keywords
 ### Installing the workflow
 
 1. Install `notif`: `brew install coryfklein/tap/notif`
-2. Download [`Notif.alfredworkflow`](https://github.com/coryfklein/macos-notification-cli/raw/main/Notif.alfredworkflow) and double-click to import into Alfred
+2. Download [`Notif.alfredworkflow`](https://github.com/coryfklein/macos-notification-cli/releases/latest/download/Notif.alfredworkflow) and open to import into Alfred
 3. Grant Accessibility permission to **Alfred** in System Settings > Privacy & Security > Accessibility
 
 ## How it works
