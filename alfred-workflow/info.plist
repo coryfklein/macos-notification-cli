@@ -230,13 +230,18 @@ notif list</string>
 Requires the notif CLI: brew install coryfklein/tap/notif
 
 Keywords:
-  cn          — Click the topmost notification (expands groups automatically)
-  dismiss     — Dismiss all notifications
-  notifications — List all current notifications (shown in Large Type)
+
+• cn — Click the topmost notification (expands groups automatically)
+
+• dismiss — Dismiss all notifications
+
+• notifications — List all current notifications (shown in Large Type)
 
 Setup:
-  1. Install notif: brew install coryfklein/tap/notif
-  2. Grant Accessibility permission to Alfred in System Settings > Privacy &amp; Security > Accessibility
+
+1. Install notif: brew install coryfklein/tap/notif
+
+2. Grant Accessibility permission to Alfred in System Settings &gt; Privacy &amp; Security &gt; Accessibility
 
 https://github.com/coryfklein/macos-notification-cli</string>
 	<key>uidata</key>
