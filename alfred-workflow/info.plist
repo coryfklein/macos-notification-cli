@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.coryfklein.notif-workflow</string>
+	<key>connections</key>
+	<dict>
+		<key>NOTIF-CLICK-KEYWORD</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>NOTIF-CLICK-SCRIPT</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>NOTIF-DISMISS-KEYWORD</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>NOTIF-DISMISS-SCRIPT</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>NOTIF-LIST-KEYWORD</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>NOTIF-LIST-SCRIPT</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>NOTIF-LIST-SCRIPT</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>NOTIF-LIST-LARGETYPE</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Cory Klein</string>
+	<key>description</key>
+	<string>Click, dismiss, and list macOS notifications from Alfred. Requires the notif CLI (brew install coryfklein/tap/notif).</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Notif — Notification Center Actions</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>cn</string>
+				<key>subtext</key>
+				<string>Click the top macOS notification (expands groups automatically)</string>
+				<key>text</key>
+				<string>Click Notification</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>NOTIF-CLICK-KEYWORD</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
+notif click 1</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>NOTIF-CLICK-SCRIPT</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>dismiss</string>
+				<key>subtext</key>
+				<string>Dismiss all macOS notifications</string>
+				<key>text</key>
+				<string>Dismiss Notifications</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>NOTIF-DISMISS-KEYWORD</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
+notif test clear</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>NOTIF-DISMISS-SCRIPT</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>notifications</string>
+				<key>subtext</key>
+				<string>List all current macOS notifications</string>
+				<key>text</key>
+				<string>List Notifications</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>NOTIF-LIST-KEYWORD</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
+notif list</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>NOTIF-LIST-SCRIPT</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<string></string>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>output</key>
+				<integer>1</integer>
+				<key>showoldcontent</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.largetype</string>
+			<key>uid</key>
+			<string>NOTIF-LIST-LARGETYPE</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Notification Center Actions for Alfred
+
+Requires the notif CLI: brew install coryfklein/tap/notif
+
+Keywords:
+  cn          — Click the topmost notification (expands groups automatically)
+  dismiss     — Dismiss all notifications
+  notifications — List all current notifications (shown in Large Type)
+
+Setup:
+  1. Install notif: brew install coryfklein/tap/notif
+  2. Grant Accessibility permission to Alfred in System Settings > Privacy &amp; Security > Accessibility
+
+https://github.com/coryfklein/macos-notification-cli</string>
+	<key>uidata</key>
+	<dict>
+		<key>NOTIF-CLICK-KEYWORD</key>
+		<dict>
+			<key>xpos</key>
+			<real>100</real>
+			<key>ypos</key>
+			<real>100</real>
+		</dict>
+		<key>NOTIF-CLICK-SCRIPT</key>
+		<dict>
+			<key>xpos</key>
+			<real>300</real>
+			<key>ypos</key>
+			<real>100</real>
+		</dict>
+		<key>NOTIF-DISMISS-KEYWORD</key>
+		<dict>
+			<key>xpos</key>
+			<real>100</real>
+			<key>ypos</key>
+			<real>250</real>
+		</dict>
+		<key>NOTIF-DISMISS-SCRIPT</key>
+		<dict>
+			<key>xpos</key>
+			<real>300</real>
+			<key>ypos</key>
+			<real>250</real>
+		</dict>
+		<key>NOTIF-LIST-KEYWORD</key>
+		<dict>
+			<key>xpos</key>
+			<real>100</real>
+			<key>ypos</key>
+			<real>400</real>
+		</dict>
+		<key>NOTIF-LIST-SCRIPT</key>
+		<dict>
+			<key>xpos</key>
+			<real>300</real>
+			<key>ypos</key>
+			<real>400</real>
+		</dict>
+		<key>NOTIF-LIST-LARGETYPE</key>
+		<dict>
+			<key>xpos</key>
+			<real>500</real>
+			<key>ypos</key>
+			<real>400</real>
+		</dict>
+	</dict>
+	<key>userconfigurationconfig</key>
+	<array/>
+	<key>version</key>
+	<string>0.1.0</string>
+	<key>webaddress</key>
+	<string>https://github.com/coryfklein/macos-notification-cli</string>
+</dict>
+</plist>

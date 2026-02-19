@@ -107,6 +107,22 @@ notif test expanded  # One expanded group
 notif test clear     # Dismiss all notifications
 ```
 
+## Alfred workflow
+
+An [Alfred](https://www.alfredapp.com/) workflow is included with three keywords:
+
+| Keyword | Action |
+|---------|--------|
+| `cn` | Click the topmost notification (expands groups automatically) |
+| `dismiss` | Dismiss all notifications |
+| `notifications` | List all current notifications (shown in Large Type) |
+
+### Installing the workflow
+
+1. Install `notif`: `brew install coryfklein/tap/notif`
+2. Download [`Notif.alfredworkflow`](https://github.com/coryfklein/macos-notification-cli/raw/main/Notif.alfredworkflow) and double-click to import into Alfred
+3. Grant Accessibility permission to **Alfred** in System Settings > Privacy & Security > Accessibility
+
 ## How it works
 
 `notif` uses the macOS Accessibility API (`AXUIElement` from the ApplicationServices framework) to read and interact with the Notification Center process. It navigates the accessibility tree to find notifications, determine their state (individual, collapsed group, expanded group), and perform actions like clicking or dismissing. Written in Swift with [swift-argument-parser](https://github.com/apple/swift-argument-parser).
