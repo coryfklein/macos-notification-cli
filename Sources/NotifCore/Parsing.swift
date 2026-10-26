@@ -35,4 +35,28 @@ public enum NotifParsing {
     public static func isStackedDescription(_ description: String) -> Bool {
         description.hasSuffix(", stacked")
     }
+
+    /// Determine if an AX subrole is a single notification.
+    /// Tahoe uses "AXNotificationCenterAlert" for every notification; macOS 27
+    /// reports on-screen banners as "AXNotificationCenterBanner".
+    public static func isNotificationSubrole(_ subrole: String?) -> Bool {
+        subrole == "AXNotificationCenterAlert" || subrole == "AXNotificationCenterBanner"
+    }
+
+    /// Split a notification's static texts into app name, title and body.
+    /// Alerts list the app name first: [app, title, body].
+    /// Banners omit it: [title, body] or [title, subtitle, body]; the extra
+    /// segments are joined into the body.
+    public static func splitStaticTexts(
+        _ texts: [String], leadingAppName: Bool
+    ) -> (appName: String?, title: String?, body: String?) {
+        if leadingAppName {
+            let appName = texts.count > 0 ? texts[0] : nil
+            let title = texts.count > 1 ? texts[1] : nil
+            let body = texts.count > 2 ? texts[2] : nil
+            return (appName, title, body)
+        }
+        let rest = texts.dropFirst()
+        return (nil, texts.first, rest.isEmpty ? nil : rest.joined(separator: " — "))
+    }
 }

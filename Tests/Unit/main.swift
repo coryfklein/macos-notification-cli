@@ -119,6 +119,44 @@ final class TestRunner {
             )
         }
 
+        suite("isNotificationSubrole") {
+            check(
+                NotifParsing.isNotificationSubrole("AXNotificationCenterAlert"),
+                "Alert is a notification"
+            )
+            check(
+                NotifParsing.isNotificationSubrole("AXNotificationCenterBanner"),
+                "Banner is a notification"
+            )
+            check(
+                !NotifParsing.isNotificationSubrole("AXNotificationCenterAlertStack"),
+                "Stack is not a single notification"
+            )
+            check(
+                !NotifParsing.isNotificationSubrole(nil),
+                "Missing subrole is not a notification"
+            )
+        }
+
+        suite("splitStaticTexts") {
+            let alert = NotifParsing.splitStaticTexts(["Mail", "Meeting", "Slides"], leadingAppName: true)
+            checkEqual(alert.appName, "Mail", "Alert app name")
+            checkEqual(alert.title, "Meeting", "Alert title")
+            checkEqual(alert.body, "Slides", "Alert body")
+
+            let banner = NotifParsing.splitStaticTexts(["Build done", "All green"], leadingAppName: false)
+            checkNil(banner.appName, "Banner has no app name text")
+            checkEqual(banner.title, "Build done", "Banner title")
+            checkEqual(banner.body, "All green", "Banner body")
+
+            let subtitled = NotifParsing.splitStaticTexts(["Workspace", "#general", "hello"], leadingAppName: false)
+            checkEqual(subtitled.title, "Workspace", "Subtitled banner title")
+            checkEqual(subtitled.body, "#general — hello", "Subtitled banner body")
+
+            let titleOnly = NotifParsing.splitStaticTexts(["Ping"], leadingAppName: false)
+            checkNil(titleOnly.body, "Title-only banner has no body")
+        }
+
         // Summary
         print("")
         let total = passed + failed
