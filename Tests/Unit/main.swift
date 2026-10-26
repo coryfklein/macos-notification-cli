@@ -139,21 +139,25 @@ final class TestRunner {
         }
 
         suite("splitStaticTexts") {
-            let alert = NotifParsing.splitStaticTexts(["Mail", "Meeting", "Slides"], leadingAppName: true)
+            let alert = NotifParsing.splitStaticTexts(["Mail", "Meeting", "Slides"], appName: "Mail")
             checkEqual(alert.appName, "Mail", "Alert app name")
             checkEqual(alert.title, "Meeting", "Alert title")
             checkEqual(alert.body, "Slides", "Alert body")
 
-            let banner = NotifParsing.splitStaticTexts(["Build done", "All green"], leadingAppName: false)
-            checkNil(banner.appName, "Banner has no app name text")
+            let noDescription = NotifParsing.splitStaticTexts(["Mail", "Meeting", "Slides"], appName: nil)
+            checkEqual(noDescription.appName, "Mail", "First text is the app name without description")
+            checkEqual(noDescription.title, "Meeting", "Title without description")
+
+            let banner = NotifParsing.splitStaticTexts(["Build done", "All green"], appName: "Xcode")
+            checkEqual(banner.appName, "Xcode", "macOS 27 app name from description")
             checkEqual(banner.title, "Build done", "Banner title")
             checkEqual(banner.body, "All green", "Banner body")
 
-            let subtitled = NotifParsing.splitStaticTexts(["Workspace", "#general", "hello"], leadingAppName: false)
+            let subtitled = NotifParsing.splitStaticTexts(["Workspace", "#general", "hello"], appName: "Slack")
             checkEqual(subtitled.title, "Workspace", "Subtitled banner title")
             checkEqual(subtitled.body, "#general — hello", "Subtitled banner body")
 
-            let titleOnly = NotifParsing.splitStaticTexts(["Ping"], leadingAppName: false)
+            let titleOnly = NotifParsing.splitStaticTexts(["Ping"], appName: "Slack")
             checkNil(titleOnly.body, "Title-only banner has no body")
         }
 

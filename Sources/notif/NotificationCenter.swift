@@ -188,9 +188,7 @@ enum NotificationCenterReader {
     private static func extractTextContent(from node: AXNode) -> (appName: String?, title: String?, body: String?) {
         var texts: [String] = []
         collectStaticTexts(node, into: &texts, maxDepth: 5)
-        return NotifParsing.splitStaticTexts(
-            texts, leadingAppName: node.subrole != "AXNotificationCenterBanner"
-        )
+        return NotifParsing.splitStaticTexts(texts, appName: extractAppNameFromDescription(node))
     }
 
     private static func extractAppName(from node: AXNode) -> String? {

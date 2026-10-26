@@ -44,19 +44,21 @@ public enum NotifParsing {
     }
 
     /// Split a notification's static texts into app name, title and body.
-    /// Alerts list the app name first: [app, title, body].
-    /// Banners omit it: [title, body] or [title, subtitle, body]; the extra
+    /// Tahoe lists the app name first: [app, title, body].
+    /// macOS 27 omits it: [title, body] or [title, subtitle, body]; the extra
     /// segments are joined into the body.
+    /// The app name is detected by comparing the first text with `appName`
+    /// (taken from the AX description).
     public static func splitStaticTexts(
-        _ texts: [String], leadingAppName: Bool
+        _ texts: [String], appName: String?
     ) -> (appName: String?, title: String?, body: String?) {
-        if leadingAppName {
+        if appName == nil || texts.first == appName {
             let appName = texts.count > 0 ? texts[0] : nil
             let title = texts.count > 1 ? texts[1] : nil
             let body = texts.count > 2 ? texts[2] : nil
             return (appName, title, body)
         }
         let rest = texts.dropFirst()
-        return (nil, texts.first, rest.isEmpty ? nil : rest.joined(separator: " — "))
+        return (appName, texts.first, rest.isEmpty ? nil : rest.joined(separator: " — "))
     }
 }
