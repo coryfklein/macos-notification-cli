@@ -21,6 +21,9 @@ import NotifCore
 ///
 /// **Standalone notification:**
 ///   AXGroup subrole="AXNotificationCenterAlert" (not preceded by an AXHeading)
+///
+/// macOS 27 reports on-screen banners as subrole="AXNotificationCenterBanner",
+/// handled like "AXNotificationCenterAlert".
 enum NotificationCenterReader {
 
     /// Get all top-level entries (notifications and groups) from Notification Center.
@@ -75,7 +78,7 @@ enum NotificationCenterReader {
                             }
                         }
                         i += 1
-                    } else if child.subrole == "AXNotificationCenterAlert" {
+                    } else if NotifParsing.isNotificationSubrole(child.subrole) {
                         let notif = buildNotification(child, index: "\(entryIndex).\(subIndex)")
                         notifications.append(notif)
                         subIndex += 1
@@ -107,7 +110,7 @@ enum NotificationCenterReader {
                     entryIndex += 1
                 }
 
-            } else if node.subrole == "AXNotificationCenterAlert" {
+            } else if NotifParsing.isNotificationSubrole(node.subrole) {
                 // Standalone notification (not part of an expanded group)
                 let notif = buildNotification(node, index: "\(entryIndex)")
                 entries.append(.notification(notif))
@@ -185,11 +188,7 @@ enum NotificationCenterReader {
     private static func extractTextContent(from node: AXNode) -> (appName: String?, title: String?, body: String?) {
         var texts: [String] = []
         collectStaticTexts(node, into: &texts, maxDepth: 5)
-
-        let appName = texts.count > 0 ? texts[0] : nil
-        let title = texts.count > 1 ? texts[1] : nil
-        let body = texts.count > 2 ? texts[2] : nil
-        return (appName, title, body)
+        return NotifParsing.splitStaticTexts(texts, appName: extractAppNameFromDescription(node))
     }
 
     private static func extractAppName(from node: AXNode) -> String? {

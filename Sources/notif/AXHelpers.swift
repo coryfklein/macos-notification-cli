@@ -190,7 +190,7 @@ enum AXHelpers {
 
         // Determine layout: is the first child a notification/stack itself,
         // or a container that holds notifications?
-        let isNotification = firstChild.subrole == "AXNotificationCenterAlert"
+        let isNotification = NotifParsing.isNotificationSubrole(firstChild.subrole)
             || firstChild.subrole == "AXNotificationCenterAlertStack"
 
         if isNotification {
